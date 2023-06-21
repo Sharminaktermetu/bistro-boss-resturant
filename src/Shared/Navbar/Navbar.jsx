@@ -5,32 +5,32 @@ import useCart from '../../hooks/useCart';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
-    const [cart]=useCart()
+    const [cart] = useCart()
     const handleLogOut = () => {
         logOut()
-        .then(()=>{})
-        .catch(()=>{})
+            .then(() => { })
+            .catch(() => { })
 
     }
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/menu'>Menu</Link></li>
         <li><Link to='/order/salad'>Order Food</Link></li>
-        <li><Link to='/'>
-            <button className="btn">
-               Added
-                <div className="badge badge-neutral">+{cart?.length||0}</div>
-            </button>
+        <li><Link to='/dashboard/mycart'>
+            <div className="indicator">
+                <span className="indicator-item badge badge-secondary"> {cart?.length||0}</span>
+                <button className="bg-slate-700 px-3 py-2 rounded-lg">Items</button>
+            </div>
         </Link></li>
-
+       
         {
-            user ? <><li><Link onClick={handleLogOut}>LogOut</Link> </li> 
-            <li>
-                <span>{user?.displayName}</span>            
-            </li>
-                </>
-            :
-            <li><Link to='/login'>Login</Link></li>
+            user ? <><li><Link onClick={handleLogOut}>LogOut</Link> </li>
+                <li>
+                    <span>{user?.displayName}</span>
+                </li>
+            </>
+                :
+                <li><Link to='/login'>Login</Link></li>
         }
 
     </>

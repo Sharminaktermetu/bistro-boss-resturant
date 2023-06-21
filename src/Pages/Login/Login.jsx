@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import Social from '../../Shared/Social/Social';
 
 
 const Login = () => {
@@ -51,7 +52,7 @@ const Login = () => {
         loadCaptchaEnginge(6);
     }, [])
     return (
-        <div className="flex justify-center items-center h-screen bg-slate-500">
+        <div className="flex justify-center items-center  bg-slate-500">
             <form
                 className="w-96 p-8 bg-white rounded shadow-lg"
                 onSubmit={handleSubmit}
@@ -90,8 +91,9 @@ const Login = () => {
                     <button  className="btn btn-outline w-full btn-sm my-12">Validate Captcha</button>
                 </div>
                     <p>New to this website? <Link to="/signup" className='btn btn-link'>Sign up</Link></p>
+                    <Social></Social>
                 <div className="form-control mt-6">
-                    <button disabled={disabled} className="btn btn-primary">Login</button>
+                    <button disabled={false} className="btn btn-primary">Login</button>
                 </div>
             </form>
         </div>
